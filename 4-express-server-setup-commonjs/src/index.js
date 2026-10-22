@@ -2,13 +2,27 @@ const express = require("express");
 
 const app = express();
 
-app.get("/", (req, res) => {
+// Middleweres..............
+function mid1(req, res, next) {
+  console.log("Mid1");
+  next();
+}
+function mid2(req, res, next) {
+  console.log("Mid2");
+  next();
+}
+function mid3(req, res, next) {
+  console.log("Mid3");
+  next();
+}
+
+app.get("/", mid1, mid2, mid3, (req, res) => {
   return res.json({
     message: "Welcome to the Home Page",
   });
 });
 
-app.get("/ping", (req, res) => {
+app.get("/ping", [mid1, mid2], (req, res) => {
   return res.json({
     message: "Pong",
   });
