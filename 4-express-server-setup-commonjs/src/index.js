@@ -14,6 +14,12 @@ app.get("/ping", (req, res) => {
   });
 });
 
+app.get("/name", (req, res) => {
+  return res.json({
+    message: "My Name Is GAURAV SINGH",
+  });
+});
+
 app.post("/hello", (req, res) => {
   return res.json({
     message: "hello",
