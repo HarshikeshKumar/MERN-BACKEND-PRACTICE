@@ -23,6 +23,13 @@ app.get("/ping", (req, res) => {
   });
 });
 
+app.get(/.*/, (req, res) => {
+  return res.status(404).json({
+    message: "Not Found",
+    status: 404,
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is Running at PORT: ${PORT}`);
 });
